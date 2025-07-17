@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colegio José Domingo de Santistevan</title>
+  <style>
+    /* Reset básico */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #FFFFFF; scroll-behavior: smooth; }
+    header { background-color: #FFFFFF; color: black; padding: 20px; text-align: center; }
+    nav { background-color: #F0812E; }
+    nav ul { list-style-type: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+    nav ul li { position: relative; }
+    nav ul li a { display: block; color: black; padding: 14px 20px; text-decoration: none; }
+    nav ul li a:hover { background-color: #7279AC; color: white; }
+    nav ul ul { display: none; position: absolute; background-color: #F0812E; top: 48px; left: 0; min-width: 160px; border-radius: 0 0 5px 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); flex-direction: column; z-index: 1000;}
+    nav ul ul li { width: 100%; }
+    nav ul ul a { padding: 12px 16px; }
+    nav ul li:hover > ul { display: block; }
+
+    .hero {
+      background: url('hero.jpg') no-repeat center/cover;
+      height: 300px;
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 2px 2px #000;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: 2em; }
+
+    section { padding: 20px; background: white; margin: 10px auto; border-radius: 8px; max-width: 1000px; }
+    section h2 { color: #004080; margin-bottom: 10px; }
+
+    .grid { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .card { flex: 1; min-width: 250px; background: #f2f2f2; padding: 1rem; border-radius: 8px; }
+
+    form input, form textarea { width: 100%; padding: 0.5rem; margin-bottom: 1rem; }
+    form button { padding: 0.7rem 1.5rem; background: #004080; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+
+    footer { background: #7279AC; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+
+    /* Carrusel */
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    .carousel-slide {
+      display: none;
+      width: 100%;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    .dots-container {
+      text-align: center;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 0 0 8px 8px;
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Contenedor de imagen junto a texto */
+    .contenedor {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .contenedor img {
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .texto {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Colegio José Domingo de Santistevan</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li>
+      <a href="#nosotros">¿Quiénes somos?</a>
+      <ul>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#mision">Misión, Visión y Valores</a></li>
+        <li><a href="#equipo">Autoridades</a></li>
+        <li><a href="#areas">Áreas y Departamentos</a></li>
+        <li><a href="#infraestructura">Infraestructura</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#reglamento">Reglamento</a></li>
+        <li><a href="#himno">Himno y Bandera</a></li>
+        <li><a href="#permisos">Permisos de Funcionamiento</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#niveles">Niveles de Estudio</a>
+      <ul>
+        <li><a href="#inicial">Inicial</a></li>
+        <li><a href="#basica">Básica</a></li>
+        <li><a href="#bachillerato">Bachillerato</a></li>
+      </ul>
+    </li>
+    <li><a href="#metodologia">Metodología Académica</a></li>
+    <li>
+      <a href="#informacion">Información Académica</a>
+      <ul>
+        <li><a href="#convenios">Convenios Académicos</a></li>
+        <li><a href="#periodos">Periodos Académicos</a></li>
+        <li><a href="#uniformes">Uniformes</a></li>
+        <li><a href="#horarios">Horarios</a></li>
+      </ul>
+    </li>
+    <li><a href="#admisiones">Admisiones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<section id="inicio">
+  <h2>Inicio</h2>
+
+  <!-- Carrusel de imágenes -->
+  <div class="carousel-container">
+    <div class="carousel-slide fade">
+      <img src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/468721555_18233364367303875_305968791183832579_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=H9AkNtDYJPYQ7kNvwHpkE4s&_nc_oc=Adm-J90yayIKG3GmrU4wV2wQGufzym9ILk1Gtd9q9zzSWwKp_YUNaUUt8_DheQlpDVU&_nc_zt=23&_nc_ht=scontent-sjc3-1.xx&_nc_gid=m9mTlRRRpxBol39jc3EAJQ&oh=00_AfQxEsqlanODZNSmvIR315xVpbeA04xKsoenifEAQkJUjw&oe=687B40D3" alt="Imagen 1">
+    </div>
+    <div class="carousel-slide fade">
+      <img src="https://scontent.fgye18-1.fna.fbcdn.net/v/t51.75761-15/501337926_18252939874303875_9121096744714824283_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Q0_YJ_kguJQQ7kNvwE8tEJC&_nc_oc=AdlrLn0kUpT4rB9myhnGbscvJfayE_BbgqDR8VDXOcSzGZ4EGnHlLNPCNSC61XDPOSE&_nc_zt=23&_nc_ht=scontent.fgye18-1.fna&_nc_gid=Ujf3QVOYsdVLWTfKncqNKw&oh=00_AfTWK4TFiC7AxNEE3Ko8a6kL9iTCxWpZoAxRz66XWc0DDQ&oe=687CE5D5" alt="Imagen 2">
+    </div>
+    <div class="carousel-slide fade">
+      <img src="https://scontent.fgye18-1.fna.fbcdn.net/v/t39.30808-6/490139583_656382487137816_6259846647902196843_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=sIMuBL5zVsAQ7kNvwFmfTLw&_nc_oc=AdmgCDNrFH-QMOXFU9NHDoKEyRZ-qTl00ndr8V9iA3GfteSgNGOkdfPsrHIa_qTJ2LE&_nc_zt=23&_nc_ht=scontent.fgye18-1.fna&_nc_gid=hGIz4uqCzbMJtAY9NA7Ozw&oh=00_AfQhJINfocHEWvdaw33xyUar8wbI-x-VYGDIY7Y9rt8CmQ&oe=687CC771" alt="Imagen 3">
+    </div>
+    <div class="carousel-slide fade">
+      <img src="https://scontent.fgye18-1.fna.fbcdn.net/v/t51.75761-15/501311364_18252939958303875_2732266260932697284_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IPW-PyIE8UIQ7kNvwEUK4fT&_nc_oc=Adk-buVnTUt-pPYNxW0fafxb4qheTQtrUKgjSOxAl35qsCHm5sbOpTOBFm9DSPV3YDs&_nc_zt=23&_nc_ht=scontent.fgye18-1.fna&_nc_gid=m7gL4ZHct7LIGbODFG0ihQ&oh=00_AfTc0lwsx32vCvmf_1zVBhlb5WsH7G6KNbFbTEn8JKD93g&oe=687CC938" alt="Imagen 4">
+    </div>
+    <div class="carousel-slide fade">
+      <img src="https://scontent.fgye18-1.fna.fbcdn.net/v/t39.30808-6/468829868_18233375842303875_6073716453229405910_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=6hr9k17k-iMQ7kNvwEQ7hNY&_nc_oc=AdmMfh2dPMB0hjEALi2znvgmmBfv4jQka6WDcUsssUp5DEIrLDXbRhrnduAl8LtLup4&_nc_zt=23&_nc_ht=scontent.fgye18-1.fna&_nc_gid=K02oeAQXpvHfPHS4bTM8ug&oh=00_AfQUstIV_QHOriic4Wlpk2mHRMAbkeR4dsQQvtQf6KqB3g&oe=687CDD7C" alt="Imagen 5">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="dots-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("carousel-slide");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+  </script>
+</section>
+
+<section id="nosotros">
+  <h2>¿Quiénes somos?</h2>
+  <img src="https://santistevan.edu.ec/images/Fachada_JDS_2024.jpg" alt="Fachada Colegio" width="660" height="245" style="border-radius: 8px;">
+  <p>La Unidad Educativa "José Domingo de Santistevan" es una institución privada perteneciente a la Red de Colegios de Formación Profesional de la Junta de Beneficencia de Guayaquil, con la misión de formar estudiantes libres, responsables y solidarios, brindando una educación de calidad basada en valores e impulsando la innovación y la formación profesional.</p>
+
+  <p>Ofrecemos educación desde Inicial 2 hasta Tercero de Bachillerato, con modernas instalaciones que incluyen canchas deportivas y laboratorios especializados, garantizando una formación integral.</p>
+
+  <p>Nuestra historia inicia con la administración municipal, para luego ser gestionada por la Junta de Beneficencia. Inaugurada el 5 de enero de 1905, la institución fue fundada con fondos donados por José Domingo de Santistevan. Hasta el 2001, fue administrada por los Padres Salesianos.</p>
+
+  <p>Enfocamos nuestra enseñanza en la participación cívica y comunitaria y destacamos por la excelencia académica, reflejada en los logros de nuestros aprendices. Con 1.200 estudiantes, hemos formado a generaciones que han dejado su huella en la sociedad, como el Dr. Eduardo Peña Triviño, ex Ministro de Educación y Vicepresidente de la República.</p>
+
+  <p>Reconocida por su alto rendimiento académico y deportivo, la Unidad Educativa José Domingo de Santistevan se posiciona como una institución de referencia en Guayaquil.</p>
+</section>
+
+<section id="historia">
+  <h2>Historia</h2>
+  <img src="https://santistevan.edu.ec/images/santistevan/web/banda_santistevan.jpg" alt="Banda Santistevan" width="660" height="245" style="border-radius: 8px;">
+  <p>El Directorio de la Junta de Beneficencia de Guayaquil, en Sesión General del 12 de julio de 1903, resolvió construir el Asilo de niños Huérfanos, José Domingo de Santistevan, en un lote situado en las faldas del Cerro Santa Ana. El 5 de enero de 1905, se marcó la fecha de fundación del asilo, el que dio inicio en ese año a sus labores educativas y de asistencia social.</p>
+
+  <p>La administración de esta obra de enorme trascendencia para la comunidad guayaquileña fue encargada a la Comunidad Salesiana del Ecuador, cuyo primer Director fue Monseñor Obispo Domingo Comín. La finalidad de esta institución era la de recibir niños huérfanos y de escasos recursos económicos y brindarles educación primaria, alimentación y formación espiritual.</p>
+
+  <p>En 1905 se inició esta obra con 24 niños varones. Se les recibía desde los 6 años de edad y solamente se les impartía enseñanza primaria. El horario de la escuela en la mañana era de 08h00 a 11h30 y en la tarde de 13h30 a 15h30.</p>
+</section>
+
+<section id="mision">
+  <h2>Misión, Visión y Valores</h2>
+  <h3>Misión</h3>
+  <p>Formar personas libres, responsables y solidarias a través de una educación de calidad, basada en valores, que promueva la innovación y el desarrollo profesional.</p>
+
+  <h3>Visión</h3>
+  <p>Ser una institución educativa líder en excelencia académica y formación integral, reconocida por su compromiso con la sociedad y la innovación.</p>
+
+  <h3>Valores</h3>
+  <ul>
+    <li>Responsabilidad</li>
+    <li>Solidaridad</li>
+    <li>Respeto</li>
+    <li>Innovación</li>
+    <li>Compromiso</li>
+  </ul>
+</section>
+
+<section id="equipo">
+  <h2>Autoridades</h2>
+  <p>El equipo directivo está conformado por profesionales comprometidos con la educación de calidad:</p>
+  <ul>
+    <li>Director: Lic. Carlos Pérez</li>
+    <li>Subdirector Académico: Mg. Ana Gómez</li>
+    <li>Coordinador de Inicial: Mg. Luis Martínez</li>
+    <li>Coordinador de Básica: Lic. María López</li>
+    <li>Coordinador de Bachillerato: Ing. José Ramírez</li>
+  </ul>
+</section>
+
+<section id="areas">
+  <h2>Áreas y Departamentos</h2>
+  <p>Contamos con áreas académicas especializadas para potenciar el aprendizaje:</p>
+  <ul>
+    <li>Área de Ciencias Naturales</li>
+    <li>Área de Ciencias Sociales</li>
+    <li>Área de Matemáticas</li>
+    <li>Área de Lenguaje y Comunicación</li>
+    <li>Departamento de Deportes</li>
+    <li>Departamento de Arte y Cultura</li>
+  </ul>
+</section>
+
+<section id="infraestructura">
+  <h2>Infraestructura</h2>
+  <p>Nuestra infraestructura incluye:</p>
+  <ul>
+    <li>Aulas modernas y equipadas</li>
+    <li>Laboratorios de ciencias y computación</li>
+    <li>Biblioteca con amplia colección</li>
+    <li>Cancha deportiva múltiple</li>
+    <li>Auditorio para eventos y conferencias</li>
+  </ul>
+</section>
+
+<section id="ubicacion">
+  <h2>Ubicación</h2>
+  <p>Estamos ubicados en:</p>
+  <address>
+    Av. José Domingo de Santistevan N44-101 y San Martín,<br />
+    Guayaquil, Ecuador.
+  </address>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6584231336125!2d-79.8833971857269!3d-2.196480937583081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d1241efbcf355%3A0x896ee50b101540a3!2sUnidad%20Educativa%20Jos%C3%A9%20Domingo%20de%20Santistevan!5e0!3m2!1ses!2sec!4v1687009999043!5m2!1ses!2sec"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section id="reglamento">
+  <h2>Reglamento</h2>
+  <p>El reglamento estudiantil establece normas y procedimientos para garantizar un ambiente educativo respetuoso y seguro.</p>
+  <ul>
+    <li>Asistencia obligatoria y puntualidad</li>
+    <li>Respeto a docentes y compañeros</li>
+    <li>Prohibición de uso de dispositivos móviles durante clases</li>
+    <li>Código de vestimenta uniforme</li>
+    <li>Procedimientos disciplinarios</li>
+  </ul>
+</section>
+
+<section id="himno">
+  <h2>Himno y Bandera</h2>
+  <p>El himno institucional es un símbolo de identidad y orgullo para nuestra comunidad educativa.</p>
+<p>El Santistevan nos llena la vida,</p>
+<p>nos forma y cultiva el espíritu,</p>
+<p>nos enseña valores y metas,</p>
+<p>bajo la diestra de Dios avanzamos.</p>
+
+<p>Es un taller del alma y el cuerpo,</p>
+<p>donde se aprende a triunfar con esfuerzo,</p>
+<p>Santistevan, una ruta al futuro</p>
+<p>que nos lleva a servir con amor.</p>
+
+<p>Eres nuestro guía, estrella del norte</p>
+<p>baluarte en ciencia, cultura y deporte</p>
+<p>José Domingo de Santistevan</p>
+<p>obra de la Junta de Beneficencia.</p>
+
+<p>Contigo aprendemos a ser generosos</p>
+<p>honestos, guardianes de la naturaleza</p>
+<p>José Domingo de Santistevan</p>
+<p>obra de la Junta de Beneficencia.</p>
+
+<p>Santistevan eres un galardón,</p>
+<p>Prendido en el corazón,</p>
+<p>Nos alientas a ser mejores,</p>
+<p>Nos haces grandes emprendedores.</p>
+
+<p>Formamos una gran familia,</p>
+<p>nuestra fuerza es el amor solidario,</p>
+<p>de Guayaquil una gran institución</p>
+<p>al servicio de la comunidad.</p>
+
+</section>
+
+<section id="permisos">
+  <h2>Permisos de Funcionamiento</h2>
+  <p>La institución cuenta con los permisos y certificaciones vigentes emitidos por el Ministerio de Educación.</p>
+  <img src="permisos.jpg" alt="Permisos" width="660" height="245" style="border-radius: 8px;">
+</section>
+
+<section id="niveles">
+  <h2>Niveles de Estudio</h2>
+
+  <section id="inicial">
+    <h3>Inicial</h3>
+    <p>En el nivel inicial, se fomenta el desarrollo integral de los niños con actividades lúdicas y pedagógicas.</p>
+  </section>
+
+  <section id="basica">
+    <h3>Básica</h3>
+    <p>En el nivel básico, se desarrolla el pensamiento crítico y se fortalece el aprendizaje en las áreas fundamentales.</p>
+  </section>
+
+  <section id="bachillerato">
+    <h3>Bachillerato</h3>
+    <p>El bachillerato ofrece formación académica y técnica que prepara a los estudiantes para la educación superior y el mundo laboral.</p>
+  </section>
+</section>
+
+<section id="metodologia">
+  <h2>Metodología Académica</h2>
+  <p>Utilizamos metodologías activas y participativas para promover el aprendizaje significativo.</p>
+  <ul>
+    <li>Aprendizaje basado en proyectos</li>
+    <li>Evaluación formativa y sumativa</li>
+    <li>Uso de tecnologías educativas</li>
+    <li>Fomento de habilidades blandas</li>
+  </ul>
+</section>
+
+<section id="informacion">
+  <h2>Información Académica</h2>
+
+  <section id="convenios">
+    <h3>Convenios Académicos</h3>
+    <p>Contamos con convenios con instituciones nacionales e internacionales para el desarrollo académico y cultural.</p>
+  </section>
+
+  <section id="periodos">
+    <h3>Periodos Académicos</h3>
+    <p>El año lectivo está dividido en cuatro periodos, con evaluaciones periódicas.</p>
+  </section>
+
+  <section id="uniformes">
+    <h3>Uniformes</h3>
+    <p>El uniforme escolar debe usarse con responsabilidad y orgullo institucional.</p>
+  </section>
+
+  <section id="horarios">
+    <h3>Horarios</h3>
+    <p>Las clases se imparten de lunes a viernes, en horarios diferenciados según el nivel.</p>
+  </section>
+</section>
+
+<section id="admisiones">
+  <h2>Admisiones</h2>
+  <p>Para realizar la admisión, debe completar el formulario y presentar los documentos requeridos en la secretaría.</p>
+  <form>
+    <label for="nombre">Nombre completo:</label><br />
+    <input type="text" id="nombre" name="nombre" required><br />
+
+    <label for="email">Correo electrónico:</label><br />
+    <input type="email" id="email" name="email" required><br />
+
+    <label for="nivel">Nivel al que desea ingresar:</label><br />
+    <select id="nivel" name="nivel" required>
+      <option value="">Seleccione</option>
+      <option value="inicial">Inicial</option>
+      <option value="basica">Básica</option>
+      <option value="bachillerato">Bachillerato</option>
+    </select><br />
+
+    <label for="mensaje">Comentarios adicionales:</label><br />
+    <textarea id="mensaje" name="mensaje" rows="4"></textarea><br />
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <form action="procesar_formulario.php" method="POST">
+    <label for="nombre">Nombre:</label><br />
+    <input type="text" id="nombre" name="nombre" required /><br />
+
+    <label for="email">Correo electrónico:</label><br />
+    <input type="email" id="email" name="email" required /><br />
+
+    <label for="mensaje">Mensaje:</label><br />
+    <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br />
+
+    <button type="submit">Enviar</button>
+  </form>
+  <p>O también puedes contactarnos en:</p>
+  <p>Dirección: Av. José Domingo de Santistevan N44-101 y San Martín, Guayaquil, Ecuador</p>
+  <p>Teléfono: +593 4 123 4567</p>
+  <p>Correo: narcisadumaniarana2009@gmail.com</p>
+  <p>Síguenos en redes sociales:</p>
+  <ul>
+    <li><a href="https://www.facebook.com/uejosedomingodesantistevan" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+    <li><a href="https://www.instagram.com/uejosedomingodesantistevan" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    <li><a href="https://twitter.com/ue_santistevan" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+  </ul>
+</section>
+
+
+</body>
+</html>
